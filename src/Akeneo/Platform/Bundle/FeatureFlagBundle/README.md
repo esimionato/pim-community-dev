@@ -112,7 +112,7 @@ class FooFeatureFlag implements FeatureFlag
 
 To ease developments, the _FeatureFlagBundle_ comes with a few ready to use implementations. When you want to use those classes, all you have to do is to declare a service.  
 
-- `Akeneo\Platform\Bundle\FeatureFlagBundle\EnvVarFeatureFlag`: know if a feature is activated by checking an environment variable.  
+- `Akeneo\Platform\Bundle\FeatureFlagBundle\Configuration\EnvVarFeatureFlag`: know if a feature is activated by checking an environment variable.  
 - ...
 
 ### About the frontend
