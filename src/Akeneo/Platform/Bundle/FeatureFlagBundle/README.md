@@ -50,7 +50,6 @@ services:
         class: 'Akeneo\Platform\Bundle\FeatureFlagBundle\Configuration\EnvVarFeatureFlag'
         arguments:
             - '%env(FLAG_ONBOARDER_ENABLED)%'
-        tags: ['akeneo_feature_flag']
 ```
 
 Behind the scenes, the very simple `EnvVarFeatureFlag` class is called:
@@ -84,7 +83,6 @@ services:
         class: 'Akeneo\My\Own\Namespace\FooFeatureFlag'
         arguments:
             - '@request_stack'
-        tags: ['akeneo_feature_flag']
 ``` 
 
 ```php
