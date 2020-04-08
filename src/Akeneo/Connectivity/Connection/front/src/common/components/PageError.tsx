@@ -6,7 +6,7 @@ import {PropsWithTheme} from '../theme';
 type Props = {
     imgUrl?: string;
     title: ReactNode;
-    children: ReactNode;
+    children?: ReactNode;
 };
 
 export const PageError: FC<Props> = ({imgUrl = defaultImgUrl, title, children}: Props) => (

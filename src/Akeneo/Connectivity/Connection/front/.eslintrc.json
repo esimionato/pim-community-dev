@@ -21,8 +21,7 @@
         "no-console": "warn",
         "react-hooks/exhaustive-deps": "warn",
         "react-hooks/rules-of-hooks": "error",
-        "react/display-name": "off",
-        "react/no-unescaped-entities": "off"
+        "react/prop-types": "off"
     },
     "settings": {
         "react": {

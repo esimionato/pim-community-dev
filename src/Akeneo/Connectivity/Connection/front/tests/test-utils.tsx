@@ -12,3 +12,8 @@ export const createWithProviders = (nextElement: React.ReactElement) =>
     create(<DefaultProviders>{nextElement}</DefaultProviders>);
 
 export const renderWithProviders = (ui: React.ReactElement) => render(ui, {wrapper: DefaultProviders});
+
+export const fetchMockResponseOnce = (requestUrl: string, responseBody: string) =>
+    fetchMock.mockResponseOnce(request =>
+        request.url === requestUrl ? Promise.resolve(responseBody) : Promise.reject()
+    );
