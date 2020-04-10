@@ -186,7 +186,8 @@ For those use cases, we'll go simple. Inject the feature flags service (backend 
 
 The standard use case for that are premium features, like the _Onboarder_. They will always be present in the code, but won't be enabled for everyone or everytime.
 
-Those flags require extra attention. We must avoid crippling business code with `if/else` branching. Instead, we can use 
+Those flags require extra attention. We must avoid crippling business code with `if/else` branching. Instead, we can use:
+
     - [inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control) and [Symfony's service factories](https://symfony.com/doc/current/service_container/factories.html) 
     - [Symfony's synthetic services](https://symfony.com/doc/current/service_container/synthetic_services.html)
     - the [strategy pattern](https://en.wikipedia.org/wiki/Strategy_pattern).
