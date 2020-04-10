@@ -1,7 +1,7 @@
 # FeatureFlagBundle
 
-Simple, stupid and yet flexible Feature Flags system for the Symfony world. Please, take 30 minutes to read the tremendous article [Feature Toggles (aka Feature Flags)
-](https://www.martinfowler.com/articles/feature-toggles.html). Feature flags are not an easy and small topic. They present great powers but come with many burdens.  
+Simple, stupid and yet flexible Feature Flags system for the Symfony world. If you consider introducing a new feature flag, please, take 30 minutes to read the tremendous article [Feature Toggles (aka Feature Flags)
+](https://www.martinfowler.com/articles/feature-toggles.html) before. Feature flags are not an easy and small topic. They present great powers but come with many burdens.  
 
 ## Why an Akeneo bundle for that?
 
@@ -131,7 +131,7 @@ A service called `feature_flags` exists to determine if the feature you have con
 ```php
 $flags = $container->get('feature_flags');
 
-if ($flags->isEnabled('myFeature')) { //...
+if ($flags->isEnabled('myCoolFeature')) { //...
 ```
 
 #### Frontend
@@ -141,8 +141,34 @@ A service called `pim/feature-flags` exists to determine if the feature you have
 ```js
 const FeatureFlags = require("pim/feature-flags");
 ​
-if (FeatureFlags.isEnabled("myFeature")) { //...
+if (FeatureFlags.isEnabled("myCoolFeature")) { //...
 ```
+
+You can easily disable a form extension if your feature is disabled by using the `feature` metadata:
+
+```yaml
+# form_extensions.yml
+
+extensions:
+  pim-menu-system-connection-settings:
+    module: pim/menu/item
+    parent: pim-menu-system-navigation-block
+    feature: myCoolFeature
+```
+
+Same mechanism to disable a route if your feature is disabled:
+
+```yaml
+# requirejs.yml
+
+config:
+  config:
+    pim/controller-registry:
+      controllers:
+        akeneo_connectivity_connection_settings_index:
+          module: pim/controller/connectivity/connection/settings
+          feature: myCoolFeature
+``` 
 
 ### Short living feature flags
 
