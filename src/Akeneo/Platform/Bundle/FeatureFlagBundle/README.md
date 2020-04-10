@@ -144,9 +144,6 @@ const FeatureFlags = require("pim/feature-flags");
 if (FeatureFlags.isEnabled("myFeature")) { //...
 ```
 
-
-TODO with Paul: the idea is to have a simple service `AkeneoFeatureFlags`. Maybe it can be embedded in a fetcher to act as a kind of cache.
-
 ### Short living feature flags
 
 **Flags that will live from a few days to a few weeks.**
