@@ -117,7 +117,7 @@ To ease developments, the _FeatureFlagBundle_ comes with a few ready to use impl
 
 ### About the frontend
 
-Flags are of course also available for frontend. Behind the scenes, a backend route (TODO: ROUTE HERE) is called. It returns a JSON response answering if the feature is enabled or not. See the part _Knowing if a feature is enabled_ for more information.
+Flags are of course also available for frontend. Behind the scenes, a backend route (called `feature_flag`) is called. It returns a JSON response answering if the feature is enabled or not. See the part _Knowing if a feature is enabled_ for more information.
 
 
 ## Using feature flags in your code
@@ -126,14 +126,24 @@ Flags are of course also available for frontend. Behind the scenes, a backend ro
 
 #### Backend
 
-A service called `akeneo_feature_flags` exists to determine if the feature you have configured in `config/packages/akeneo_feature_flag.yml` is enabled or not. This is the one and only backend entry point you have to use.
+A service called `feature_flags` exists to determine if the feature you have configured in `config/packages/akeneo_feature_flag.yml` is enabled or not. This is the one and only backend entry point you have to use.
 
 ```php
-$flags = $container->get('akeneo_feature_flags');
+$flags = $container->get('feature_flags');
+
 if ($flags->isEnabled('myFeature')) { //...
 ```
 
 #### Frontend
+
+A service called `pim/feature-flags` exists to determine if the feature you have configured in `config/packages/akeneo_feature_flag.yml` is enabled or not. This is the one and only backend entry point you have to use.
+
+```js
+const FeatureFlags = require("pim/feature-flags");
+​
+if (FeatureFlags.isEnabled("myFeature")) { //...
+```
+
 
 TODO with Paul: the idea is to have a simple service `AkeneoFeatureFlags`. Maybe it can be embedded in a fetcher to act as a kind of cache.
 
