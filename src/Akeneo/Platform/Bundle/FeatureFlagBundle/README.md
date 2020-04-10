@@ -38,8 +38,6 @@ interface FeatureFlag
 }    
 ```
 
-Your feature flag service must be tagged with `akeneo_feature_flag`.
-
 ### Examples
 
 Let's take a very simple example: we want to (de)activate the _Onboarder_ feature via an environment variable. All we have to do is to declare the following service:
@@ -188,9 +186,12 @@ For those use cases, we'll go simple. Inject the feature flags service (backend 
 
 The standard use case for that are premium features, like the _Onboarder_. They will always be present in the code, but won't be enabled for everyone or everytime.
 
-Those flags require extra attention. We must avoid crippling business code with `if/else` branching. Instead, use [inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control) and [Symfony's service factories](https://symfony.com/doc/current/service_container/factories.html) or the [strategy pattern](https://en.wikipedia.org/wiki/Strategy_pattern).
+Those flags require extra attention. We must avoid crippling business code with `if/else` branching. Instead, we can use 
+    - [inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control) and [Symfony's service factories](https://symfony.com/doc/current/service_container/factories.html) 
+    - [Symfony's synthetic services](https://symfony.com/doc/current/service_container/synthetic_services.html)
+    - the [strategy pattern](https://en.wikipedia.org/wiki/Strategy_pattern).
 
-TODO: in this example, we used...
+Of course, at some point, you'll need a `if/else` to branch the (de)activation of your feature. But the idea here is to bury it far from your business code. 
 
 ## Part about what we can do when flagging?
 
